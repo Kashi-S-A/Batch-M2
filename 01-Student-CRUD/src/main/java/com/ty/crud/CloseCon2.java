@@ -5,19 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Update {
-
+public class CloseCon2 {
 	public static void main(String[] args) {
 		String driver = "org.postgresql.Driver";
-		String url = "jdbc:postgresql://localhost:5432/jdbc_db";
+		String url = "jdbc:postgresql://localhost:5432/jc_db";
 		String username = "postgres";
 		String password = "root";
 
 		try {
 			Class.forName(driver);
 			System.out.println("driver loaded");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 
-			Connection con = DriverManager.getConnection(url, username, password);
+		try (Connection con = DriverManager.getConnection(url, username, password);) {
 			System.out.println("connection created");
 
 			Statement stm = con.createStatement();
@@ -29,11 +31,6 @@ public class Update {
 
 			System.out.println("No. of rows affected : " + result);
 
-			con.close();
-			System.out.println("connection closed");
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
