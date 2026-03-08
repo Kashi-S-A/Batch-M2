@@ -7,26 +7,27 @@ import javax.persistence.Persistence;
 
 import com.ty.entity.Employee;
 
-public class Save {
+public class Update {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
-
 		EntityManager em = emf.createEntityManager();
-
 		EntityTransaction et = em.getTransaction();
 
-		Employee emp = new Employee();
-		emp.setEid(104);
-		emp.setName("Mangi");
-		emp.setDesign("Software Engineer");
-		emp.setSalary(50000);
+		Employee employee = em.find(Employee.class, 107);
 
-		et.begin();
-		em.persist(emp);
-		et.commit();
+		if (employee != null) {
 
-		System.out.println("saved");
+			employee.setSalary(60000);
 
+			et.begin();
+			em.merge(employee);
+			et.commit();
+
+			System.out.println("Salary updated");
+
+		} else {
+			System.out.println("employee not found");
+		}
 	}
 }
