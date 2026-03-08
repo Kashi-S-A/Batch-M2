@@ -34,7 +34,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> 
 
 	</dependencies>
 
