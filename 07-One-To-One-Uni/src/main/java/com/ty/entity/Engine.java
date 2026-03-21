@@ -10,9 +10,6 @@ public class Engine {
 	private int eid;
 	private double cc;
 
-	// getters
-	// setters
-
 	public int getEid() {
 		return eid;
 	}

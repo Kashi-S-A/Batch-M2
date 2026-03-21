@@ -3,6 +3,7 @@ package com.ty.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -14,20 +15,8 @@ public class Bank {
 	private String name;
 	private String ifsc;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Account> accounts;
-	
-	//getters and setters
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public int getBid() {
 		return bid;

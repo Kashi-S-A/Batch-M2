@@ -10,21 +10,6 @@ public class Account {
 	private long accno;
 	private String name;
 	private double balance;
-	
-	//getters and setters
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public long getAccno() {
 		return accno;

@@ -7,17 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+/**
+ * 
+ */
+/**
+ * 
+ */
 @Entity
 @Table(name = "users_info")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_gen")
+	@SequenceGenerator(name = "seq_gen", initialValue = 10, allocationSize = 5)
 	private int id;
 
 	@Column(name = "username")
@@ -35,6 +43,12 @@ public class User {
 
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", createdDate="
+				+ createdDate + ", lastUpdatedDate=" + lastUpdatedDate + "]";
+	}
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;

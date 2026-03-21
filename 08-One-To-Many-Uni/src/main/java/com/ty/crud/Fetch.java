@@ -15,7 +15,7 @@ public class Fetch {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
 		EntityManager em = emf.createEntityManager();
 
-		Bank bank = em.find(Bank.class, 2);
+		Bank bank = em.find(Bank.class, 1);
 
 		if (bank != null) {
 			System.out.println("-------bank-------");
