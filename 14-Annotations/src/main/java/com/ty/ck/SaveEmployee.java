@@ -1,31 +1,33 @@
-package com.ty;
+package com.ty.ck;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class Save {
+public class SaveEmployee {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 
-		System.out.println(emf);
-		System.out.println(em);
-		System.out.println(et);
+		Employee employee = new Employee();
+		employee.setName("Pengi");
+		employee.setSalary(59000);
+		employee.setAddress("Mulund");
 
-//		User user = new User();
-//		user.setName("Manga");
-//		user.setEmail("manga@gmail.com");
-//		user.setPhone(7654582);
-//
-//		et.begin();
-//		em.persist(user);
-//		et.commit();
-//
-//		System.out.println("saved");
+		EmployeeId eid = new EmployeeId();
+		eid.setEmail("pengi@gmail.com");
+		eid.setPhone(456780);
+
+		employee.setEid(eid);
+
+		et.begin();
+		em.persist(employee);
+		et.commit();
+
+		System.out.println("Saved");
 
 	}
 }
